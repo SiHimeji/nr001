@@ -1,0 +1,9 @@
+COMMENT ON COLUMN public.t_parts_center.haisiyouteibi IS 'ƒAƒ‰[ƒg“úi”p~—\’è“új';
+ALTER TABLE public.t_parts_center ADD satueihaikihi timestamp NULL;
+COMMENT ON COLUMN public.t_parts_center.satueihaikihi IS 'B‰e—p•”•i”pŠü“ú';
+ALTER TABLE public.t_parts_center ADD satueitana varchar NULL;
+COMMENT ON COLUMN public.t_parts_center.satueitana IS 'B‰e—p•”•i•ÛŠÇ’I”Ô†';
+ALTER TABLE public.t_parts_center ADD zaikosyori varchar NULL;
+COMMENT ON COLUMN public.t_parts_center.zaikosyori IS 'İŒÉˆ—';
+ALTER TABLE public.t_parts_center ADD zaikosyorihi timestamp NULL;
+COMMENT ON COLUMN public.t_parts_center.zaikosyorihi IS 'İŒÉˆ—“ú';

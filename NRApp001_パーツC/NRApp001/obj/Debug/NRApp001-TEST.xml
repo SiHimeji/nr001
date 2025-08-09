@@ -1,0 +1,57 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+NRApp001-TEST
+</name>
+</assembly>
+<members>
+<member name="T:NRApp001.My.Resources.Resources">
+<summary>
+  ローカライズされた文字列などを検索するための、厳密に型指定されたリソース クラスです。
+</summary>
+</member>
+<member name="P:NRApp001.My.Resources.Resources.ResourceManager">
+<summary>
+  このクラスで使用されているキャッシュされた ResourceManager インスタンスを返します。
+</summary>
+</member>
+<member name="P:NRApp001.My.Resources.Resources.Culture">
+<summary>
+  すべてについて、現在のスレッドの CurrentUICulture プロパティをオーバーライドします
+  現在のスレッドの CurrentUICulture プロパティをオーバーライドします。
+</summary>
+</member>
+<member name="M:NRApp001.ModuleApp.IsDecimal(System.Double)">
+ ------------------------------------------------------------------------------
+ <summary>
+     指定した値が小数を含むかどうかを返します。</summary>
+ <param name="dValue">
+     検査対象となる値。</param>
+ <returns>
+     小数を含む場合は True。それ以外は False。</returns>
+ ------------------------------------------------------------------------------
+</member>
+<member name="M:NRApp001.ModuleApp.WriteCsvFromDGV(System.Windows.Forms.DataGridView,System.String)">
+ -----------------------------------------------------------------------------
+ <summary>
+ DataGridViewからCSVファイルへの書込処理
+ （WriteCsv:CSVファイルの書込処理の利用による）
+ </summary>
+ <param name="dgv">DataGridView</param>
+ <param name="astrFileName">ファイル名</param>
+ -----------------------------------------------------------------------------
+</member>
+<member name="M:NRApp001.ModuleApp.WriteCsv(System.String,System.String[][])">
+ -----------------------------------------------------------------------------
+ <summary>
+ CSVファイルの書込処理
+ </summary>
+ <param name="astrFileName">ファイル名</param>
+ <param name="aarrData">書込データ文字列の2次元配列</param>
+ <returns>True:結果OK, False:NG</returns>
+ <remarks>カラム名をファイルに出力したい場合は、書込データの先頭に設定すること</remarks>
+ -----------------------------------------------------------------------------
+</member>
+</members>
+</doc>

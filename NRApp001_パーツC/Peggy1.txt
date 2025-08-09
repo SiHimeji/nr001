@@ -1,0 +1,4 @@
+ALTER TABLE public.t_buhin_spec ADD tyokuhan varchar NULL;
+COMMENT ON COLUMN public.t_buhin_spec.tyokuhan IS '’¼”Ì‰Â”Û';
+ALTER TABLE public.t_buhin_spec ADD tyokuhanriyu varchar NULL;
+COMMENT ON COLUMN public.t_buhin_spec.tyokuhanriyu IS '’¼”Ì——R';
