@@ -14,6 +14,8 @@
 
     Dim fast As Boolean
 
+    Dim KomaneDay As String
+
     Public Property UserID As String
         Get
             UserID = _UserID
@@ -39,68 +41,6 @@
             _UserName = value
         End Set
     End Property
-
-    'Dim array料金チェック() As String = {
-    '   "check", "ステータス", "訂正依頼内容", "メモ", "出庫", "完了", "訂正更新日", "チェック", "確認完了日", "点検受付番号",
-    '    "ｄｍ番号", "ステータス名",
-    '    "回収区分", "点検受付日", "点検完了日", "フロント承認日", "回収完了日", "技術料", "出張料", "その他料金", "サポート料", "値引き", "点検料金", "消費税額", "請求合計金額",
-    '    "無償部品代", "無償出張料", "無償技術料", "無償その他内容", "無償その他", "無償出張料差額", "無償診断料", "無償合計",
-    '     "点検状態区分名称", "修理状況", "保証規定区分", "請求先会社", "請求先名", "請求先電話", "回収金額", "価格指示理由", "更新日", "製品名", "備考"}
-
-    'Dim array安心プラン() As String = {
-    '    "check", "ステータス", "訂正依頼内容", "メモ", "出庫", "完了", "訂正更新日", "チェック", "確認完了日", "点検受付番号",
-    '    "ｄｍ番号", "ステータス名",
-    '    "回収区分", "点検受付日", "点検完了日", "フロント承認日",
-    '    "回収完了日", "技術料", "出張料", "その他料金", "点検料金",
-    '    "無償部品代", "無償出張料", "無償技術料", "無償その他", "無償出張料差額", "無償合計",
-    '    "点検状態区分名称", "保証規定区分", "承認番号", "請求先電話", "更新日"}
-
-    'Dim array出張料重複() As String = {
-    '    "check", "ステータス", "訂正依頼内容", "メモ", "出庫", "完了", "訂正更新日", "チェック", "確認完了日", "点検受付番号",
-    '    "ｄｍ番号", "ステータス名",
-    '    "点検受付日", "点検完了日",
-    '    "都道府県名", "市区町村名", "町域", "番地", "建物", "部屋",
-    '    "回収区分", "技術料", "出張料", "その他料金", "点検料金",
-    '    "無償出張料", "無償技術料", "無償その他", "修理状況",
-    '    "担当shopコード", "店略称", "担当サービスマン", "サービスマン名",
-    '    "価格指示理由", "更新日"}
-
-    'Dim array未回収() As String = {
-    '    "check", "ステータス", "訂正依頼内容", "メモ", "出庫", "完了", "訂正更新日", "チェック", "確認完了日", "点検受付番号",
-    '    "ｄｍ番号", "ステータス名",
-    '    "回収区分", "点検受付日", "点検完了日", "フロント承認日", "回収予定日", "回収完了日",
-    '    "技術料", "出張料", "その他料金", "点検料金",
-    '    "無償部品代", "無償出張料", "無償技術料", "無償その他", "無償出張料差額", "無償合計",
-    '    "点検状態区分名称", "修理状況", "保証規定区分", "請求先会社", "請求先名", "請求先電話", "回収金額", "更新日"}
-
-    'Dim arrary2024() As String = {
-    '    "check", "ステータス", "訂正依頼内容", "メモ", "出庫", "完了", "訂正更新日", "チェック", "確認完了日", "点検受付番号",
-    '    "ｄｍ番号", "ステータス名", "回収区分", "受付区分", "依頼区分内容", "点検受付日", "点検完了日", "フロント承認日", "回収完了日",
-    '    "技術料", "出張料", "その他料金", "値引き", "点検料金", "無償部品代", "無償出張料", "無償技術料", "無償その他",
-    '    "無償出張料差額", "無償合計", "点検状態区分名称", "保証規定区分", "承認番号", "請求先電話", "更新日",
-    '    "マイページ連携仮id", "マイページ連携用フラグ", "マイページid"}
-
-    'Dim arrary2025() As String = {
-    '    "ﾁｪｯｸ", "ステータス", "訂正依頼内容", "メモ", "出庫", "完了", "訂正更新日", "チェック", "確認完了日", "点検受付番号",
-    '    "ｄｍ番号",
-    '    "ステータス名", "回収区分", "受付区分", "依頼区分内容", "点検受付日", "点検完了日", "フロント承認日", "回収完了日",
-    '    "技術料", "出張料", "その他料金", "値引き", "点検料金", "無償部品代", "無償出張料", "無償技術料", "無償その他",
-    '    "無償出張料差額", "無償合計", "備考", "点検状態区分名称", "保証規定区分", "承認番号", "請求先電話", "更新日"
-    '   }
-
-
-    'Private Function GetHeaderColNo(head As String, dgv As DataGridView) As Integer
-    '    Dim ret As Integer = 0
-
-    '    For Each column As DataGridViewColumn In dgv.Columns
-    '        If column.HeaderText = head Then
-    '            Return ret
-    '        End If
-    '        ret = ret + 1
-    '    Next
-    '    Return -1
-    'End Function
-
 
     Public Function Getarray料金チェック(koumoku As String) As Integer
 
@@ -1502,6 +1442,73 @@
 
     End Function
 
+    Private Sub Getこまめな点検変更日()
+        Dim dt As DataTable
+        Dim strSQL As String = "select naiyou from " & schema & "m_system  where kbn ='340' and seq ='0'"
+        dt = ClassPostgeDB.SetTable(strSQL)
+        If dt.Rows.Count = 1 Then
+            KomaneDay = dt.Rows(0).Item(0).ToString & " 00:00:00"
+        Else
+            KomaneDay = "2020/01/01 00:00:00"
+        End If
+    End Sub
+
+    '====
+    '0 : こまめな点検ではない
+    '1: こまめな点検でOK
+    '2:こまめな点検でERROR
+    Private Function chk2025こまめ(ro As Integer) As Integer
+        Dim ret = 0
+        Dim buf As String
+        buf = Me.DataGridView1.Rows(ro).Cells(Getarray料金チェック("依頼区分内容")).Value.ToString
+        If buf = "こまめな点検" Then
+            ret = 1
+            Me.DataGridView1.Rows(ro).Cells(Getarray料金チェック("依頼区分内容")).Style.BackColor = Color.Green
+
+            If Me.DataGridView1.Rows(ro).Cells(Getarray料金チェック("出張料")).Value.ToString <> "3000" Then
+                Me.DataGridView1.Rows(ro).Cells(Getarray料金チェック("出張料")).Style.BackColor = Color.Red
+                ret = 2
+            End If
+            If Me.DataGridView1.Rows(ro).Cells(Getarray料金チェック("無償出張料")).Value.ToString <> "3000" Then
+                Me.DataGridView1.Rows(ro).Cells(Getarray料金チェック("無償出張料")).Style.BackColor = Color.Red
+                ret = 2
+            End If
+            If Me.DataGridView1.Rows(ro).Cells(Getarray料金チェック("技術料")).Value.ToString <> "5000" Then
+                Me.DataGridView1.Rows(ro).Cells(Getarray料金チェック("技術料")).Style.BackColor = Color.Red
+                ret = 2
+            End If
+            If Me.DataGridView1.Rows(ro).Cells(Getarray料金チェック("無償技術料")).Value.ToString <> "2100" Then
+                Me.DataGridView1.Rows(ro).Cells(Getarray料金チェック("無償技術料")).Style.BackColor = Color.Red
+                ret = 2
+            End If
+
+            If KomaneDay >= Me.DataGridView1.Rows(ro).Cells(Getarray料金チェック("点検完了日")).Value.ToString Then
+                If Me.DataGridView1.Rows(ro).Cells(Getarray料金チェック("無償診断料")).Value.ToString <> "300" Then
+                    Me.DataGridView1.Rows(ro).Cells(Getarray料金チェック("無償診断料")).Style.BackColor = Color.Red
+                    ret = 2
+                End If
+            Else
+                If Me.DataGridView1.Rows(ro).Cells(Getarray料金チェック("無償診断料")).Value.ToString <> "500" Then            '2025/08/18 変更
+                    Me.DataGridView1.Rows(ro).Cells(Getarray料金チェック("無償診断料")).Style.BackColor = Color.Red
+                    ret = 2
+                End If
+            End If
+
+            If ret = 2 Then
+                Me.DataGridView1.Rows(ro).Cells(Getarray料金チェック("依頼区分内容")).Style.BackColor = Color.Red
+                Me.DataGridView1.Rows(ro).Cells(Getarray料金チェック("点検受付番号")).Style.BackColor = Color.Red
+                Me.DataGridView1.Rows(ro).Cells(Getarray料金チェック("ステータス")).Style.BackColor = Color.Red
+
+            End If
+        End If
+        Return ret
+    End Function
+
+
+
+
+
+
     Private Sub 料金チェック1()
 
         GetMaster2025()
@@ -1525,6 +1532,7 @@
 
 
                 If chk2025B(ro) Then
+
 
                 Else
 
