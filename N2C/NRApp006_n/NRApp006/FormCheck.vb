@@ -1190,6 +1190,11 @@
         'strSQL &= ",t.店略称"
         strSQL &= ",t.マイページ連携仮id "
 
+        strSQL &= ",第１業務区分"
+        strSQL &= ",第１業務区分内容"
+        strSQL &= ",第２業務区分"
+        strSQL &= ",第２業務区分内容"
+
         strSQL &= " from " & schema & "v_yuryo_tenken_syuyaku t"
         strSQL &= " left outer join " & schema & "t_teisei t1"
         strSQL &= " on t.点検受付番号 =t1.点検受付番号 "
@@ -1201,7 +1206,6 @@
         Else
 
         End If
-
 
         strSQL &= " where t.ステータス名 in (" & strSQL1 & ")"
         strSQL &= " and   t.回収区分 in(" & strSQL2 & ")"
@@ -1215,9 +1219,10 @@
         End If
 
         strSQL &= " and ( t.ｄｍ番号 not like 'A%'  )"
+
         If CheckBoxCIM.Checked Then
 
-        Else
+        Else                        'N2Cのみ
             strSQL &= " and t.newflg  > 0"
 
         End If
@@ -1289,6 +1294,11 @@
         ro = settextColumn(Me.DataGridView1, ro, "価格指示理由", "価格指示理由", 80, False)
         ro = settextColumn(Me.DataGridView1, ro, "更新日", "更新日", 80, False)
         ro = settextColumn(Me.DataGridView1, ro, "製品名", "製品名", 80, False)
+
+        ro = settextColumn(Me.DataGridView1, ro, "第１業務区分", "第１業務区分", 80, False)             '34
+        ro = settextColumn(Me.DataGridView1, ro, "第１業務区分内容", "第１業務区分内容", 100, False)             '34
+        ro = settextColumn(Me.DataGridView1, ro, "第２業務区分", "第２業務区分", 80, False)             '34
+        ro = settextColumn(Me.DataGridView1, ro, "第２業務区分内容", "第２業務区分内容", 100, False)             '34
 
         ro = settextColumn(Me.DataGridView1, ro, "マイページ連携仮id", "備考", 400, False)             '34
 

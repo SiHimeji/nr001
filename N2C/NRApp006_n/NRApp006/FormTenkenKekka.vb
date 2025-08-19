@@ -5,6 +5,7 @@
     Dim ClassPostgeDB As New ClassPostgeDB
     Dim ZenkaiSQL As String = String.Empty
     Dim flg As Boolean = True
+
     Dim ro1a As Integer
     Dim ro1b As Integer
     Dim ro1c As Integer
@@ -706,7 +707,7 @@
         If flg Then
             Get不備内容マスタ()
             For ro = 0 To Me.DataGridView1.Rows.Count - 1
-                If Me.DataGridView1.Rows(ro).Cells(hanei).Value.ToString = "0" Then
+                If Me.DataGridView1.Rows(ro).Cells(hanei).Value.ToString = "0" Then      '反映フラグ
                     Me.DataGridView1.Rows(ro).Cells(1).Style.BackColor = ColorTranslator.FromHtml(fubicolor)
 
                     If Me.DataGridView1.Rows(ro).Cells(ro1a).Value = "0" Or Me.DataGridView1.Rows(ro).Cells(ro1a).Value = "5" Then
@@ -1723,6 +1724,17 @@
         e.DrawFocusRectangle()
 
     End Sub
+
+    Private Function GetHeaderColNo(head As String, dgv As DataGridView) As Integer
+        Dim ret As Integer = 0
+        For Each column As DataGridViewColumn In dgv.Columns
+            If column.HeaderText = head Then
+                Return ret
+            End If
+            ret = ret + 1
+        Next
+        Return -1
+    End Function
 
 
 End Class
